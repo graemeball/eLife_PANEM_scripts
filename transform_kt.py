@@ -1,3 +1,18 @@
+"""
+Script to transform the xyz coordinates of spindle poles and kinetochores relative to spindle poles and mid-point +1Z.
+Expected input is an .xlsx spreadsheet (or folder of spreadsheets) where:
+    - Multiple Sheets, each one a time-series of: t,X,Y,Z coordinates]
+    - Sheets for spindle poles 1 and 2 are named C1, C2; plus a sheet for Cmidpoint+1
+    - Remaining Sheets are for kinetochores: K1, K2, ... Kn
+Steps of transformation:
+    - translate so midpoint is x=y=z=0
+    - rotate inter-polar axis to align with Y
+    - rotate so XZ component of midpoint-to-midpoint+1 vector aligns along Z
+    - optionally translate one of poles to x=y=z=0
+
+Author: Graeme Ball (g.ball@dundee.ac.uk)
+"""
+
 import sys
 import os
 import pandas as pd
